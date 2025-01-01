@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year!🎉</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'TH Sarabun New', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: #f9d4b4; /* เปลี่ยนพื้นหลังเป็นสี #f9d4b4 */
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            color: #6a1b9a;
+            font-size: 3rem;
+            margin: 0;
+            text-align: center;
+        }
+        h2 {
+            color: #29b6f6;
+            font-size: 2rem;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .carousel {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 20px;
+        }
+        .carousel-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+            margin-top: 10px;
+        }
+        .carousel-buttons button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #b49c74; /* เปลี่ยนสีเป็น #b49c74 */
+            color: white;
+            border: none;
+            border-radius: 50px; /* เปลี่ยนปุ่มเป็นทรงกระบอก */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-buttons button:hover {
+            background-color: #29b6f6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy New Year!🎉</h1>
+    <h2>Wishing you peace, love and laughter in the new year.</h2>
+    <div class="carousel">
+        <div class="carousel-track">
+            <img src="image1.png" alt="ภาพที่ 1">
+            <img src="image2.png" alt="ภาพที่ 2">
+            <img src="image3.png" alt="ภาพที่ 3">
+        </div>
+    </div>
+    <div class="carousel-buttons">
+        <button id="prev">Back</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const images = document.querySelectorAll('.carousel img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const slideWidth = images[0].clientWidth;
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`; // แก้ไขการใช้ backticks
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>
